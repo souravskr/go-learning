@@ -2,22 +2,23 @@ package main
 
 import (
 	"Go-Learning/doctor"
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
 func main() {
-	//reader := bufio.NewReader(os.Stdin)
-	var input string
+	reader := bufio.NewReader(os.Stdin)
 	whatToSay := doctor.Intro()
 	fmt.Println(whatToSay)
 	for {
-		//userInput, _ := reader.ReadString('\n')
-		fmt.Scanln(&input)
-		if input == "quit" {
+		fmt.Print("--> ")
+		userInput, _ := reader.ReadString('\n')
+		userInput = strings.Replace(userInput, "\n", "", -1)
+		if userInput == "quit" {
 			break
 		}
-		fmt.Println(input)
-		response := doctor.Response(input)
-		fmt.Println(response)
+		fmt.Println(doctor.Response(userInput))
 	}
 }
