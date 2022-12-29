@@ -1,0 +1,1 @@
+Here is a text to display on terminal after running `go run main.go myfile.txt`
