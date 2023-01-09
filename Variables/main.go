@@ -21,9 +21,8 @@ func main() {
 			fmt.Println("Bye...")
 			break
 		} else {
-			response := doctor.Response(userInput)
 			fmt.Println()
-			fmt.Println(response)
+			fmt.Println(doctor.Response(userInput))
 		}
 
 	}
