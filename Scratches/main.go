@@ -28,7 +28,6 @@ func main() {
 	printMap(emp)
 	delete(emp, "salary")
 	printMap(emp)
-
 }
 
 func sortAnimals(arr []string) []string {
