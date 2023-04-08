@@ -2,29 +2,48 @@ package main
 
 import "fmt"
 
-type bot interface {
-	getGreeting() string
+type Animal interface {
+	says() string
+	numberOfLegs() int8
 }
-type englishBot struct {
+
+type Dog struct {
+	Name         string
+	Sounds       string
+	NumberOfLegs int8
 }
-type spanishBot struct {
+
+type Cat struct {
+	Name         string
+	Sounds       string
+	NumberOfLegs int8
+	HasTail      bool
 }
 
 func main() {
-	eb := englishBot{}
-	sb := spanishBot{}
-	printGreeting(eb)
-	printGreeting(sb)
+	dog := Dog{"Dog", "woof", 4}
+	cat := Cat{"Cat", "meow", 4, true}
+	riddle(&dog)
+	riddle(&cat)
 }
 
-func (englishBot) getGreeting() string {
-	return "Hello!"
+func riddle(a Animal) {
+	riddle := fmt.Sprintf(`The animal has %d and it says %s, what animal is it?`, a.numberOfLegs, a.says)
+	fmt.Println(riddle)
 }
 
-func (spanishBot) getGreeting() string {
-	return "Hola!"
+func (d *Dog) says() string {
+	return d.Sounds
 }
 
-func printGreeting(b bot) {
-	fmt.Println(b.getGreeting())
+func (d *Dog) numberOfLegs() int8 {
+	return d.NumberOfLegs
+}
+
+func (c *Cat) says() string {
+	return c.Sounds
+}
+
+func (c *Cat) numberOfLegs() int8 {
+	return c.NumberOfLegs
 }
