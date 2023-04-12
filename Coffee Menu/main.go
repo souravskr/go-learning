@@ -26,11 +26,16 @@ func main() {
 	fmt.Println("========================")
 
 	char := ' '
-	for char != 'q' {
+	for char != 'q' && char != 'Q' {
+		fmt.Printf("-> ")
 		char, _, _ = keyboard.GetSingleKey()
 		option, _ := strconv.Atoi(string(char))
-		fmt.Println("->", option)
-		fmt.Printf("You chose %s\n", menu[option])
+		value, isFound := menu[option]
+		if isFound {
+			fmt.Printf("You chose %s\n", value)
+		} else {
+			fmt.Printf("You chose wrong option. Please enter a valid one.\n")
+		}
 	}
 	fmt.Println("Program quiting...")
 }
