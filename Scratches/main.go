@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sort"
+	"time"
 )
 
 type Employee struct {
@@ -28,6 +30,7 @@ func main() {
 	printMap(emp)
 	delete(emp, "salary")
 	printMap(emp)
+	fmt.Println(randomNumber(5))
 }
 
 func sortAnimals(arr []string) []string {
@@ -51,4 +54,9 @@ func printMap(myMap map[string]string) {
 	for _, value := range myMap {
 		fmt.Println(value)
 	}
+}
+
+func randomNumber(num int) int {
+	rand.Seed(int64(time.Now().Nanosecond()))
+	return rand.Intn(num)
 }
